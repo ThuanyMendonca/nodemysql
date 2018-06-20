@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Candidato</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <link rel="stylesheet" href="/css/materialize.min.css">
+</head>
+
+<body>
+
+    <nav style="background-color: #0174DF;">
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo" style="margin-left: 30px;">Eleição</a>
+            <ul id="nav-mobile" class="hide-on-med-and-down" style="margin-left: 160px;">
+                <li><a href="sass.html">Home</a></li>
+                <li><a href="sass.html">Listar Candidato</a></li>
+                <li><a href="badges.html">Novo Candidato</a></li>
+                <li><a href="collapsible.html">JavaScript</a></li>
+            </ul>
+        </div>
+    </nav>
+    <center>
+        <h4>Lista de Candidatos</h4>
+    </center>
+    <div class="container" style="margin-top: 60px;">
+        <table class="striped">
+            <thead>
+                <tr>
+                    <th>Codigo</th>
+                    <th>Candidato</th>
+                    <th>Partido</th>
+                    <th>Sigla</th>
+                    <th>Fundação</th>
+                    <th>Cargo</th>
+                    <th>Editar</th>
+                    <th>Excluir</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (can of candidato){%>
+                <tr>
+                    <td><%= can.can_codigo%> </td>
+                    <td><%= can.can_candidato%> </td>
+                    <td><%= can.can_partido%> </td>
+                    <td><%= can.can_sigla%> </td>
+                    <td><%= can.can_fundacao%> </td>
+                    <td><%= can.can_cargo%> </td>
+                    <td>
+                        <a style="background-color: #ffd600;" class="btn waves-effect waves-light" href=<%=" /alteraCandidato" + can.can_codigo %>><i class="material-icons right">edit</i>
+                        </a></td>
+                        <td>
+                            <a style="background-color: red;" class="btn waves-effect waves-light" href=<%=" /deletaCandidato" + can.can_codigo %>><i class="material-icons right">delete</i>
+                            </a>
+                        </td>
+                    </tr>
+                    <%} %>
+                </tbody>
+            </table>
+        </div>
+
+        <script src="/js/materialize.js"></script>
+    </body>
+
+    </html>

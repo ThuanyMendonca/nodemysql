@@ -1,0 +1,57 @@
+html, body, .bloco {
+	height: 100%;
+}
+
+@media only screen and (min-width: 993px) {
+  .container {
+    width: 90%;
+  }
+}
+.mudar {
+	/*margin-top: -60px;*/
+}
+.linha{
+	background-color: #01579b;
+	height: 5px;
+}
+
+/*body {
+	background-color: grey;
+}*/
+
+/*.parallax-container {
+	height: 180px;
+	width: 750px;
+	margin-left: 329px;
+}*/
+
+p {
+	font-weight: 400;
+}
+
+#vid {
+	width: 700px;
+	height: 40px;
+}
+
+#mudar {
+	width: 100%;
+}
+#cor{
+	height: 300px;
+}
+
+.imagem{
+	margin-top: 70px;
+	margin-left: 40px;
+	width: 215px;
+	height: 110px;
+}
+
+h3 {
+	margin-left: 40px;
+}
+#test1{
+	font-family: arial;
+	font-size: 24px;
+}
