@@ -23,10 +23,11 @@ function alterarCandidato(dados, callback) {
 }
 
 function deletarCandidato(id,callback){
-	client.query('DELETE FROM '+	 tabela1 + ' WHERE can_codigo = ' + id, callback);
+	client.query('DELETE FROM '+ tabela1 + ' WHERE can_codigo = ' + id, callback);
 }
 
 function adicionarCandidato(dados, callback) {
-   var msql = 'INSERT INTO ' + tabela + ' SET ? ';
-    client.query(msql, dados, callback);
+	var msql = 'INSERT INTO ' + tabela1 + ' SET ? ';
+	console.log(dados);
+	client.query(msql, dados, callback);
 }

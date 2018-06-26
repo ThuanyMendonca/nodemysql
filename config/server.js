@@ -9,7 +9,7 @@ app = express();
 app.use(body.urlencoded({extended:true}));
 app.use(body.json());
 app.use(express.static('public'));
-app.set('port', 3000);
+app.set('port', 1000);
 
 app.set("view engine", "ejs");
 

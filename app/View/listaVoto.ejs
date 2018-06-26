@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Voto</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <link rel="stylesheet" href="/css/materialize.min.css">
+</head>
+
+<body>
+    <nav style="background-color: #0174DF;">
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo" style="margin-left: 30px;">Eleição</a>
+            <ul id="nav-mobile" class="hide-on-med-and-down" style="margin-left: 160px;">
+                <li><a href="/inicio">Home</a></li>
+                <li><a href="listaCandidato">Listar Candidato</a></li>
+                <li><a href="/candidato">Novo Candidato</a></li>
+                <li><a href="/listaVoto">Voto</a></li>
+                <li><a href="/voto">Novo Voto</a></li>
+            </ul>
+        </div>
+    </nav>
+    <center>
+        <h4>Lista de Candidatos</h4>
+    </center>
+    <div class="container" style="margin-top: 60px;">
+        <table class="striped">
+            <thead>
+                <tr>
+                    <th>Codigo</th>
+                    <th>Eleitor</th>
+                    <th>Titulo</th>
+                    <th>Urna</th>
+                    <th>Zona</th>
+                    <th>Código</th>                    
+                    <th>Editar</th>
+                    <th>Excluir</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (vot of voto){%>
+                <tr>
+                    <td><%= vot.vot_codigo%> </td>
+                    <td><%= vot.vot_eleitor%> </td>
+                    <td><%= vot.vot_nrotitulo%> </td>
+                    <td><%= vot.vot_nrourna%> </td>
+                    <td><%= vot.vot_zonaeleitoral%> </td>
+                    <td><%= vot.can_codigo%> </td>
+                    <td>
+                        <a style="background-color: #ffd600; width: 15px;" class="btn waves-effect waves-light" href=<%="/alteraVoto/" + vot.vot_codigo %>>
+                            <i class="material-icons right">edit</i>
+                        </a></td>
+                        <td>
+                            <a style="background-color: red; width: 15px;" class="btn waves-effect waves-light" href=<%=" /deletaVoto/" + vot.vot_codigo %>><i class="material-icons right">delete</i>
+                            </a>
+                        </td>
+                    </tr>
+                    <%} %>
+                </tbody>
+            </table>
+        </div>
+
+        <script src="/js/materialize.js"></script>
+    </body>
+
+    </html> 

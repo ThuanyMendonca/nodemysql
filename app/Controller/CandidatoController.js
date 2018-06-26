@@ -1,28 +1,42 @@
 var model = require('../Model/Candidato.js');
 
 module.exports = {
-	paginaInicial,
+	inicio,
 	listaCandidato,
 	alteraCandidato,
 	deletaCandidato,
 	adicionaCandidato,
-	listaCandidatoById
+	listaCandidatoById,
+	add,
+	mostraAlterar,
+}
+
+function mostraAlterar(req, res){
+	var id = req.params.can_codigo;
+	model.listarCandidatoById(id, function(err, data){
+		if (err) {
+			throw err;
+		}
+		console.log(data);
+		res.render('../app/View/alteraCandidato.ejs', {candidato: data[0]});
+	})
 }
 
 function alteraCandidato(req, res){
 	var id = req.params.can_codigo;
-	model.alterarCandidato(id, function(err, data){
+	model.alterarCandidato(req.params.can_codigo, req.body, function(err, data){
 		if(err){
 			throw err;
 		}
-		res.render('../app/View/alteraCandidato.ejs', {candidato: data});
+		res.redirect('/listaCandidato');
 	});
 }
 
-function paginaInicial(req, res){
+function inicio(req, res){
 	// Página inicial
-	res.render('../app/View/index.js')
+	res.render('../app/View/index.ejs')
 }
+
 
 function listaCandidato(req, res){
 	model.listarCandidato(function(err, data){
@@ -55,20 +69,33 @@ function listaCandidatoById(req, res){
 	})
 }
 
-	function deletaCandidato(req, res){
-		model.deletarCandidato(id, function(err, data){
-			if(err){
-				throw err;
-			}
-			res.render('../app/View/deletaCandidato.ejs');
-		})
-	}
+function deletaCandidato(req, res){
+	var id = req.params.can_codigo;
+	model.deletarCandidato(id, function(err, data){
+		if(err){
+			throw err;
+		}
+		res.redirect('/listaCandidato');
+	})
+}
 
-	function adicionaCandidato(req, res){
-		model.adicionarCandidato(function(err, data){
-			if(err){
-				throw err;
-			}
-			res.render('../app/View/adicionaCandidato.ejs');
-		})
-	}
+function adicionaCandidato(req, res){
+	var dados = req.body;
+	// console.log(dados);
+	model.adicionarCandidato(dados,function(err, data){
+		if(err){
+			throw err;
+		}
+		res.render('../app/View/adicionaCandidato.ejs', {candidato: data});
+	})
+}
+
+function add(req, res){
+	model.listarCandidato(function(err, data){
+		if(err){
+			throw err;
+		}
+		res.render('../app/View/adicionaCandidato.ejs', {candidato: data})
+	});
+
+}
